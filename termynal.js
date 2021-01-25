@@ -26,6 +26,7 @@ export default class Termynal {
      * @param {string} options.cursor – Character to use for cursor, defaults to ▋.
      * @param {Object[]} lineData - Dynamically loaded line data objects.
      * @param {boolean} options.noInit - Don't initialise the animation.
+     * @param {boolean} options.startOnInit - should start on init, defaults true.
      */
     constructor(container = '#termynal', options = {}) {
         this.container = (typeof container === 'string') ? document.querySelector(container) : container;
@@ -45,6 +46,7 @@ export default class Termynal {
         this.cursor = options.cursor
             || this.container.getAttribute(`${this.pfx}-cursor`) || '▋';
         this.lineData = this.lineDataToElements(options.lineData || []);
+        this.startOnInit = options.startOnInit === undefined || options.startOnInit;
         if (!options.noInit) this.init()
     }
 
@@ -67,7 +69,9 @@ export default class Termynal {
 
         this.container.setAttribute('data-termynal', '');
         this.container.innerHTML = '';
-        this.start();
+        if (this.startOnInit) {
+            this.start();
+        }
     }
 
     /**
