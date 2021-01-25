@@ -1,0 +1,12 @@
+{
+  "name": "@jstroem/termynal",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jstroem/termynal.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "main": "termynal.js"
+}
